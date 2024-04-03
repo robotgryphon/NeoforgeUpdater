@@ -1,0 +1,8 @@
+{
+  "Minecraft": {
+    "InstallDirectory": "%APPDATA%\\.minecraft"
+  },
+  "Neoforge": {
+    "LatestVersionEndpoint": "https://maven.neoforged.net/api/maven/latest/version/releases/net%2Fneoforged%2Fneoforge"
+  }
+}
