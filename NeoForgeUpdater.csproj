@@ -17,6 +17,8 @@
 		<Company>Ted Senft</Company>
 		<Description>A profile management tool for Neoforge.</Description>
 		<PackageTags>minecraft neoforge</PackageTags>
+		<PackageProjectUrl>https://github.com/robotgryphon/NeoforgeUpdater</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/robotgryphon/NeoforgeUpdater.git</RepositoryUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
