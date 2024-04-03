@@ -1,0 +1,42 @@
+name: .NET Core Desktop
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+    build:
+        name: build-${{matrix.os}}
+        runs-on: ${{ matrix.os }}
+        strategy:
+          matrix:
+              os: [win-x64, osx-x64, linux-x64]
+
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+              fetch-depth: 0
+
+        # Install the .NET Core workload
+        - name: Install .NET Core
+          uses: actions/setup-dotnet@v4
+          with:
+              dotnet-version: 8.0.x
+
+        # Restore the application to populate the obj folder with RuntimeIdentifiers
+        - name: Restore the application
+          run: dotnet restore -c Release
+
+        - name: Build
+          run: |
+              dotnet build -c Release --no-restore
+              dotnet publish NeoforgeUpdater.csproj -c Release -r ${{ matrix.os }} -o publish/${{ matrix.os }}
+        
+        - name: Upload build artifacts
+          uses: actions/upload-artifact@v3
+          with:
+              name: Published Binaries
+              path: publish
