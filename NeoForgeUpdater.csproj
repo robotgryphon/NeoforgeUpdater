@@ -15,7 +15,6 @@
 		<PackageTags>minecraft neoforge</PackageTags>
 		<PackageProjectUrl>https://github.com/robotgryphon/NeoforgeUpdater</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/robotgryphon/NeoforgeUpdater.git</RepositoryUrl>
-		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

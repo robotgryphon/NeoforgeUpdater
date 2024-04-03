@@ -7,9 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
+    version:
+      name: Get Version
+      runs-on: ubuntu-latest
+      outputs:
+        version: ${{ steps.version.outputs.version }}
+
+      steps:
+        - name: Version
+          id: version
+          uses: paulhatch/semantic-version@v5.0.2
+          with:
+            bump_each_commit: true
+
     build-win:
-        name: build-${{matrix.os}}
+        name: build-windows
         runs-on: windows-latest
+        needs: [ version ]
 
         steps:
         - name: Checkout
@@ -25,12 +39,12 @@ jobs:
 
         # Restore the application to populate the obj folder with RuntimeIdentifiers
         - name: Restore the application
-          run: dotnet restore
+          run: dotnet restore NeoforgeUpdater.csproj
 
         - name: Build
           run: |
-              dotnet build -c Release --no-restore
-              dotnet publish NeoforgeUpdater.csproj -c Release -r win-x64 -o publish/windows
+              dotnet build -c Release --no-restore /property:Version=${{ needs.version.outputs.version }}
+              dotnet publish NeoforgeUpdater.csproj -c Release -r win-x64 -o publish/windows /property:Version=${{ needs.version.outputs.version }}
         
         - name: Archive Release
           uses: thedoctor0/zip-release@0.7.5
@@ -44,3 +58,23 @@ jobs:
           with:
               name: Publish Binaries
               path: publish/win-x64.zip
+
+    release:
+        name: Release
+        needs: [ version, build-win ]
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Pull Binaries
+          uses: actions/download-artifact@v4
+          with:
+            name: my-artifact
+
+        - uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            prerelease: false
+            automatic_release_tag: "latest"
+            title: "Release ${{ needs.version.outputs.version }}"
+            files: |
+              publish/win-x64.zip
