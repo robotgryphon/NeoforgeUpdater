@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoForgeUpdater", "NeoForgeUpdater.csproj", "{E778F41E-E496-483D-BA04-061560B2F906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoforgeUpdater", "NeoforgeUpdater.csproj", "{E778F41E-E496-483D-BA04-061560B2F906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

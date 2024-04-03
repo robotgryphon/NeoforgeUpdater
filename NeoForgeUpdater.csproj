@@ -12,8 +12,8 @@
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<RootNamespace>NeoForgeUpdater</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageId>RG.NeoUpdater</PackageId>
-		<Title>RobotGryphon.NeoUpdater</Title>
+		<PackageId>RG.NeoforgeUpdater</PackageId>
+		<Title>RobotGryphon.NeoforgeUpdater</Title>
 		<Company>Ted Senft</Company>
 		<Description>A profile management tool for Neoforge.</Description>
 		<PackageTags>minecraft neoforge</PackageTags>
