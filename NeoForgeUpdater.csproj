@@ -3,15 +3,11 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net8.0</TargetFramework>
-		<RootNamespace>nf_updater</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PublishTrimmed>False</PublishTrimmed>
-		<PackAsTool>True</PackAsTool>
-		<ToolCommandName>update-neoforge</ToolCommandName>
-		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<PublishSingleFile>true</PublishSingleFile>
 		<RootNamespace>NeoForgeUpdater</RootNamespace>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>RG.NeoforgeUpdater</PackageId>
 		<Title>RobotGryphon.NeoforgeUpdater</Title>
 		<Company>Ted Senft</Company>
@@ -19,6 +15,7 @@
 		<PackageTags>minecraft neoforge</PackageTags>
 		<PackageProjectUrl>https://github.com/robotgryphon/NeoforgeUpdater</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/robotgryphon/NeoforgeUpdater.git</RepositoryUrl>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -4,6 +4,7 @@ using NeoForgeUpdater;
 using NeoForgeUpdater.Minecraft;
 using NeoForgeUpdater.Neoforge;
 using Spectre.Console;
+using System.Reflection;
 using System.Text.Json;
 
 // Check settings.json
