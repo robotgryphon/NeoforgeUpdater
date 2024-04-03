@@ -1,4 +1,4 @@
-name: .NET Core Desktop
+name: Build
 
 on:
   push:
@@ -7,12 +7,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-    build:
+    build-win:
         name: build-${{matrix.os}}
-        runs-on: ubuntu-latest
-        strategy:
-          matrix:
-              os: [win-x64, osx-x64, linux-x64]
+        runs-on: windows-latest
 
         steps:
         - name: Checkout
@@ -33,10 +30,17 @@ jobs:
         - name: Build
           run: |
               dotnet build -c Release --no-restore
-              dotnet publish NeoforgeUpdater.csproj -c Release -r ${{ matrix.os }} -o publish/${{ matrix.os }}
+              dotnet publish NeoforgeUpdater.csproj -c Release -r win-x64 -o publish/windows
         
+        - name: Archive Release
+          uses: thedoctor0/zip-release@0.7.5
+          with:
+            type: 'zip'
+            filename: 'win-x64.zip'
+            directory: 'publish/windows'
+
         - name: Upload build artifacts
           uses: actions/upload-artifact@v3
           with:
-              name: Published Binaries
-              path: publish
+              name: Publish Binaries
+              path: publish/win-x64.zip
