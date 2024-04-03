@@ -57,7 +57,7 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
             type: 'zip'
-            filename: 'win-x64.zip'
+            filename: '../win-x64.zip'
             directory: 'publish/windows'
 
         - name: Upload build artifacts
