@@ -56,8 +56,8 @@ jobs:
         - name: Upload build artifacts
           uses: actions/upload-artifact@v3
           with:
-              name: Publish Binaries
-              path: publish/win-x64.zip
+              name: win-x64
+              path: win-x64.zip
 
     release:
         name: Release
@@ -68,7 +68,7 @@ jobs:
         - name: Pull Binaries
           uses: actions/download-artifact@v4
           with:
-            name: my-artifact
+            name: win-x64
 
         - uses: "marvinpinto/action-automatic-releases@latest"
           with:
@@ -77,4 +77,4 @@ jobs:
             automatic_release_tag: "latest"
             title: "Release ${{ needs.version.outputs.version }}"
             files: |
-              publish/win-x64.zip
+              win-x64.zip
